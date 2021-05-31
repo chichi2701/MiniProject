@@ -1,2 +1,2 @@
 # MiniProject
- Object làm nâng kỹ năng
+Project làm nâng kỹ năng
