@@ -140,6 +140,10 @@ MonoBehaviour:
   - {fileID: 4624452224223987119}
   - {fileID: 4624452223277935034}
   - {fileID: 4624452223838409613}
+  cubeColor: {r: 0, g: 0, b: 0, a: 0}
+  numberCube: 0
+  cubeRigid: {fileID: 0}
+  isMainCube: 0
 --- !u!54 &1636184946794058
 Rigidbody:
   m_ObjectHideFlags: 0

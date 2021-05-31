@@ -18,13 +18,13 @@ public class Cube : MonoBehaviour
         cubeRigid = GetComponent<Rigidbody>();        
     }
 
-    private void SetColor(Color color)
+    public void SetColor(Color color)
     {
         cubeColor = color;
         cubeMesh.material.color = color;
     }
     
-    private void SetNumber(int number)
+    public void SetNumber(int number)
     {
         numberCube = number;
         for (int i = 0; i < 6; i++)

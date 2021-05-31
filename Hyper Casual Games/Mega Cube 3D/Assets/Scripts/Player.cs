@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     [Space]
     [SerializeField] private TouchSlider touchSlider;
 
-    [SerializeField] private Cube mainCube;
+    private Cube mainCube;
 
     private bool isPointerDown;
     private bool canMove;
@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       // SpawnCube();
+        SpawnCube();
         canMove = true;
 
         // Listen to slider events:
@@ -62,25 +62,25 @@ public class Player : MonoBehaviour
             // Push the cube:
             mainCube.cubeRigid.AddForce(Vector3.forward * pushForce, ForceMode.Impulse);
 
-           // Invoke("SpawnNewCube", 0.3f);
+            Invoke("SpawnNewCube", 0.3f);
         }
     }
 
-    //private void SpawnNewCube()
-    //{
-    //    mainCube.IsMainCube = false;
-    //    canMove = true;
-    //    SpawnCube();
-    //}
+    private void SpawnNewCube()
+    {
+        mainCube.isMainCube = false;
+        canMove = true;
+        SpawnCube();
+    }
 
-    //private void SpawnCube()
-    //{
-    //    mainCube = CubeSpawner.Instance.SpawnRandom();
-    //    mainCube.IsMainCube = true;
+    private void SpawnCube()
+    {
+        mainCube = CubeSpawner.Instance.SpawnRandom();
+        mainCube.isMainCube = true;
 
-    //    // reset cubePos variable
-    //    cubePos = mainCube.transform.position;
-    //}
+        // reset cubePos variable
+        cubePos = mainCube.transform.position;
+    }
 
     private void OnDestroy()
     {
