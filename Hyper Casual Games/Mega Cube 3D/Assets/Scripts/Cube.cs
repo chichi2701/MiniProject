@@ -3,10 +3,13 @@ using TMPro;
 
 public class Cube : MonoBehaviour
 {
+    static int staticID = 0;
+
     [SerializeField] private TMP_Text[] numbersText;
 
+    [HideInInspector] public int CubeID;
     [HideInInspector] public Color cubeColor;
-    [HideInInspector] public int numberCube;
+    [HideInInspector] public int cubeNumber;
     [HideInInspector] public Rigidbody cubeRigid;
     [HideInInspector] public bool isMainCube;
 
@@ -14,6 +17,7 @@ public class Cube : MonoBehaviour
 
     private void Awake()
     {
+        CubeID = staticID++;
         cubeMesh = GetComponent<MeshRenderer>();
         cubeRigid = GetComponent<Rigidbody>();        
     }
@@ -26,7 +30,7 @@ public class Cube : MonoBehaviour
     
     public void SetNumber(int number)
     {
-        numberCube = number;
+        cubeNumber = number;
         for (int i = 0; i < 6; i++)
         {
             numbersText[i].text = number.ToString();
