@@ -19,7 +19,7 @@ public class FX : MonoBehaviour {
    public void PlayCubeExplosionFX (Vector3 position, Color color) {
       cubeExplosionFXMainModule.startColor = new ParticleSystem.MinMaxGradient (color) ;
       cubeExplosionFX.transform.position = position ;
-      cubeExplosionFX.Play () ;
+      cubeExplosionFX.Play () ;        
    }
 
 }
