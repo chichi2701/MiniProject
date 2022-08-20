@@ -1,12 +1,12 @@
 using UnityEngine;
 public class CubeCollisions : MonoBehaviour
 {
-    Cube cube;
+    [SerializeField] Cube cube;
 
-    private void Awake()
-    {
-        cube = GetComponent<Cube>();
-    }
+    //private void Awake()
+    //{
+    //    cube = GetComponent<Cube>();
+    //}
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -51,7 +51,10 @@ public class CubeCollisions : MonoBehaviour
                 // Destroy the two cubes:
                 CubeSpawner.Instance.DestroyCube(cube);
                 CubeSpawner.Instance.DestroyCube(otherCube);
+                GameManager.Instance.SetScore(cube.cubeNumber * 2);
             }
         }
     }
+
+   
 }

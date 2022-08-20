@@ -1,10 +1,10 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class CubeSpawner : MonoBehaviour
+public class CubeSpawner : SingletionMono<CubeSpawner>
 {
-    // Singleton class
-    public static CubeSpawner Instance;
+    //// Singleton class
+    //public static CubeSpawner Instance;
 
     Queue<Cube> cubesQueue = new Queue<Cube>();
     [SerializeField] private int cubesQueueCapacity = 20;
@@ -20,10 +20,9 @@ public class CubeSpawner : MonoBehaviour
 
     private Vector3 defaultSpawnPosition;
 
-    private void Awake()
+    public override void Awake()
     {
-        Instance = this;
-
+        
         defaultSpawnPosition = transform.position;
         maxCubeNumber = (int)Mathf.Pow(2, maxPower);
 
@@ -38,8 +37,7 @@ public class CubeSpawner : MonoBehaviour
 
     private void AddCubeToQueue()
     {
-        Cube cube = Instantiate(cubePrefab, defaultSpawnPosition, Quaternion.identity, transform)
-                                .GetComponent<Cube>();
+        Cube cube = Instantiate(cubePrefab, defaultSpawnPosition, Quaternion.identity, transform).GetComponent<Cube>();
 
         cube.gameObject.SetActive(false);
         cube.isMainCube = false;
@@ -87,7 +85,7 @@ public class CubeSpawner : MonoBehaviour
         cubesQueue.Enqueue(cube);
     }
 
-    public int GenerateRandomNumber()
+    private int GenerateRandomNumber()
     {
         return (int)Mathf.Pow(2, Random.Range(1, 6));
     }
